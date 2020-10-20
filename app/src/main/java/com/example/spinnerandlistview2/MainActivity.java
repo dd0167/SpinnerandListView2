@@ -160,7 +160,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if(parent.getId() == (R.id.spin2))
+        if (parent.getId()==(R.id.spin1))
+        {
+            if (position!=0)
+            {
+                ArrayAdapter<String> adp2=new ArrayAdapter<String>(this
+                        ,R.layout.support_simple_spinner_dropdown_item,countries[position-1]);
+                spin2.setAdapter(adp2);
+                line=position-1;
+            }
+            else
+            {
+                spin2.setAdapter(null);
+            }
+        }
+
+        else if(parent.getId() == (R.id.spin2))
         {
             if (position != 0) {
                 country = position-1;
@@ -174,22 +189,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             else
             {
                 list.setVisibility(View.INVISIBLE);
-            }
-        }
-        else if (parent.getId()==(R.id.spin1))
-        {
-            ArrayAdapter<String> adp=new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,countries[position]);
-            spin2.setAdapter(adp);
-            if (position!=0)
-            {
-                ArrayAdapter<String> adp2=new ArrayAdapter<String>(this
-                        ,R.layout.support_simple_spinner_dropdown_item,countries[position-1]);
-                spin1.setAdapter(adp2);
-                line=position-1;
-            }
-            else
-            {
-                spin1.setAdapter(null);
             }
         }
     }
